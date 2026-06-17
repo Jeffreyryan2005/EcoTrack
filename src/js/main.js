@@ -79,71 +79,71 @@ function renderHome(container) {
 <!-- ==================== HOME / HERO SECTION ==================== -->
       <section class="hero" id="section-home" aria-labelledby="hero-heading">
         <!-- Animated background orbs -->
-        <div class="hero__bg" aria-hidden="true">
-          <div class="hero__orb hero__orb--1"></div>
-          <div class="hero__orb hero__orb--2"></div>
-          <div class="hero__orb hero__orb--3"></div>
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-orb hero__orb--1"></div>
+          <div class="hero-orb hero__orb--2"></div>
+          <div class="hero-orb hero__orb--3"></div>
         </div>
 
-        <div class="hero__content">
-          <div class="hero__badge" aria-hidden="true">
-            <span class="hero__badge-dot"></span>
+        <div class="hero-content">
+          <div class="hero-badge" aria-hidden="true">
+            <span class="hero-badge-dot"></span>
             Open Source &middot; Free Forever
           </div>
 
-          <h1 class="hero__title" id="hero-heading">
+          <h1 class="hero-title" id="hero-heading">
             Track Your Impact.
-            <span class="hero__title-highlight">Save the Planet.</span>
+            <span class="hero-title-highlight">Save the Planet.</span>
           </h1>
 
-          <p class="hero__subtitle">
+          <p class="hero-subtitle">
             Understand your carbon footprint with real-time calculations, personalized
             insights, and actionable challenges. Join thousands making a measurable
             difference for our planet.
           </p>
 
-          <div class="hero__actions">
-            <a href="#calculator" class="btn btn-primary btn-lg" id="hero-cta-primary" data-route="calculator">
+          <div class="hero-actions">
+            <a href="#calculator" class="btn btn-primary btn-large" id="hero-cta-primary" data-link="calculator">
               <span aria-hidden="true">🧮</span>
               Calculate My Footprint
             </a>
-            <a href="#learn" class="btn btn-secondary btn-lg" id="hero-cta-secondary" data-route="learn">
+            <a href="#learn" class="btn btn-secondary btn-large" id="hero-cta-secondary" data-link="learn">
               <span aria-hidden="true">📖</span>
               Learn More
             </a>
           </div>
 
           <!-- Floating Stats -->
-          <div class="hero__stats" aria-label="Platform statistics">
-            <div class="hero__stat-card">
-              <span class="hero__stat-value" id="stat-users">12,847</span>
-              <span class="hero__stat-label">Active Users</span>
+          <div class="hero-stats" aria-label="Platform statistics">
+            <div class="stat-counter-box">
+              <span class="stat-number" id="stat-users">12,847</span>
+              <span class="stat-label">Active Users</span>
             </div>
-            <div class="hero__stat-card">
-              <span class="hero__stat-value" id="stat-co2">2.4M</span>
-              <span class="hero__stat-label">kg CO₂ Tracked</span>
+            <div class="stat-counter-box">
+              <span class="stat-number" id="stat-co2">2.4M</span>
+              <span class="stat-label">kg CO₂ Tracked</span>
             </div>
-            <div class="hero__stat-card">
-              <span class="hero__stat-value" id="stat-reduction">18%</span>
-              <span class="hero__stat-label">Avg. Reduction</span>
+            <div class="stat-counter-box">
+              <span class="stat-number" id="stat-reduction">18%</span>
+              <span class="stat-label">Avg. Reduction</span>
             </div>
           </div>
         </div>
 
         <!-- Floating eco icons -->
-        <div class="hero__floating" aria-hidden="true">
-          <span class="hero__float-icon hero__float-icon--1">🌱</span>
-          <span class="hero__float-icon hero__float-icon--2">🌍</span>
-          <span class="hero__float-icon hero__float-icon--3">♻️</span>
-          <span class="hero__float-icon hero__float-icon--4">⚡</span>
-          <span class="hero__float-icon hero__float-icon--5">🌊</span>
-          <span class="hero__float-icon hero__float-icon--6">🍃</span>
+        <div class="hero-floating" aria-hidden="true">
+          <span class="hero-float-icon hero__float-icon--1">🌱</span>
+          <span class="hero-float-icon hero__float-icon--2">🌍</span>
+          <span class="hero-float-icon hero__float-icon--3">♻️</span>
+          <span class="hero-float-icon hero__float-icon--4">⚡</span>
+          <span class="hero-float-icon hero__float-icon--5">🌊</span>
+          <span class="hero-float-icon hero__float-icon--6">🍃</span>
         </div>
       </section>
 
       <!-- ==================== FEATURES PREVIEW ==================== -->
       <!-- ==================== FEATURES PREVIEW ==================== -->
-      <section class="features" id="section-features" aria-labelledby="features-heading">
+      <section class="home-features" id="section-features" aria-labelledby="features-heading">
         <div class="container">
           <h2 class="section-title" id="features-heading">
             Everything you need to <span class="text-gradient">go green</span>
@@ -152,38 +152,38 @@ function renderHome(container) {
             Powerful tools designed to make sustainability simple, measurable, and rewarding.
           </p>
 
-          <div class="features__grid">
+          <div class="features-grid">
             <article class="feature-card" id="feature-calculator">
-              <div class="feature-card__icon" aria-hidden="true">🧮</div>
-              <h3 class="feature-card__title">Smart Calculator</h3>
-              <p class="feature-card__desc">
+              <div class="feature-icon" aria-hidden="true">🧮</div>
+              <h3 >Smart Calculator</h3>
+              <p >
                 Calculate emissions across transport, energy, food, and shopping with
                 science-backed conversion factors from EPA and DEFRA.
               </p>
             </article>
 
             <article class="feature-card" id="feature-dashboard">
-              <div class="feature-card__icon" aria-hidden="true">📊</div>
-              <h3 class="feature-card__title">Live Dashboard</h3>
-              <p class="feature-card__desc">
+              <div class="feature-icon" aria-hidden="true">📊</div>
+              <h3 >Live Dashboard</h3>
+              <p >
                 Visualize your carbon data with interactive charts, trend analysis,
                 and category breakdowns updated in real time.
               </p>
             </article>
 
             <article class="feature-card" id="feature-insights">
-              <div class="feature-card__icon" aria-hidden="true">💡</div>
-              <h3 class="feature-card__title">AI Insights</h3>
-              <p class="feature-card__desc">
+              <div class="feature-icon" aria-hidden="true">💡</div>
+              <h3 >AI Insights</h3>
+              <p >
                 Get personalized recommendations ranked by impact. Know exactly where
                 to focus for maximum carbon reduction.
               </p>
             </article>
 
             <article class="feature-card" id="feature-challenges">
-              <div class="feature-card__icon" aria-hidden="true">🏆</div>
-              <h3 class="feature-card__title">Weekly Challenges</h3>
-              <p class="feature-card__desc">
+              <div class="feature-icon" aria-hidden="true">🏆</div>
+              <h3 >Weekly Challenges</h3>
+              <p >
                 Earn points, build streaks, and unlock achievements as you adopt
                 greener habits. Make sustainability fun.
               </p>
