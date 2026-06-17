@@ -68,24 +68,18 @@ export function renderNavbar(container) {
     });
   }
 
-  // Smart Navbar Scroll Logic
-  let lastScrollY = window.scrollY;
+  // Smart Navbar Scroll Logic - User requested it disappears entirely when scrolled
   const navbar = document.getElementById('site-header');
   
   if (navbar) {
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
       
-      // If we scroll down past 100px, hide the navbar
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > 50) {
         navbar.classList.add('nav-hidden');
-      } 
-      // If we scroll up, show the navbar
-      else if (currentScrollY < lastScrollY) {
+      } else {
         navbar.classList.remove('nav-hidden');
       }
-      
-      lastScrollY = currentScrollY;
     }, { passive: true });
   }
 }

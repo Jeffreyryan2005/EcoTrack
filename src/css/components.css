@@ -13,7 +13,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
-  z-index: var(--z-fixed);
+  z-index: var(--z-nav);
   transition: background-color var(--transition-normal);
 }
 
@@ -51,6 +51,7 @@
 }
 
 .nav-link {
+  display: block;
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
@@ -617,6 +618,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     display: none;
     box-shadow: var(--shadow-md);
     border-bottom: 1px solid var(--border-color);
+    z-index: var(--z-nav, 500);
   }
   .nav-links.active {
     display: flex;

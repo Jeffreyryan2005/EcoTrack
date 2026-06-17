@@ -61,44 +61,44 @@
 }
 
 /* Calculator mobile */
-.calc__tabs {
+.calc-tabs {
   flex-wrap: wrap;
 }
 
-.calc__tab {
+.tab-btn {
   flex: 1 1 calc(50% - var(--space-2));
   font-size: var(--font-size-sm);
 }
 
-.calc__form-grid {
+.grid-inputs-2, .grid-inputs-3 {
   grid-template-columns: 1fr;
 }
 
 /* Dashboard mobile */
-.dash__stats-grid {
+.stat-cards-row {
   grid-template-columns: 1fr;
 }
 
-.dash__chart-container {
+.chart-container {
   aspect-ratio: 4 / 3;
 }
 
-.dash__timeline-filters {
+.time-filters {
   flex-wrap: wrap;
 }
 
 /* Insights mobile */
-.insights__grid {
+.insights-grid {
   grid-template-columns: 1fr;
 }
 
 /* Challenges mobile */
-.challenges__grid {
+.challenges-grid {
   grid-template-columns: 1fr;
 }
 
 /* Education mobile */
-.edu__equivalency-grid {
+.facts-grid {
   grid-template-columns: 1fr;
 }
 
@@ -121,7 +121,7 @@
     width: auto;
   }
 
-  .calc__tab {
+  .tab-btn {
     flex: 0 1 auto;
   }
 
@@ -187,35 +187,35 @@
   }
 
   /* Calculator */
-  .calc__form-grid {
+  .grid-inputs-2, .grid-inputs-3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .calc__layout {
+  .calc-layout {
     grid-template-columns: 1fr 300px;
   }
 
   /* Dashboard */
-  .dash__stats-grid {
+  .stat-cards-row {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .dash__charts-grid {
+  .charts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Insights */
-  .insights__grid {
+  .insights-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Challenges */
-  .challenges__grid {
+  .challenges-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Education */
-  .edu__equivalency-grid {
+  .facts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -266,31 +266,31 @@
   }
 
   /* Dashboard */
-  .dash__stats-grid {
+  .stat-cards-row {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .dash__layout {
+  .dashboard-page {
     grid-template-columns: 2fr 1fr;
     gap: var(--space-8);
   }
 
   /* Insights — 3 columns */
-  .insights__grid {
+  .insights-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   /* Challenges — 3 columns */
-  .challenges__grid {
+  .challenges-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   /* Education */
-  .edu__equivalency-grid {
+  .facts-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .edu__layout {
+  .education-hub {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-10);
   }
@@ -326,16 +326,16 @@
   }
 
   /* Insights — 4 columns */
-  .insights__grid {
+  .insights-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
   /* Dashboard chart containers */
-  .dash__chart-container {
+  .chart-container {
     aspect-ratio: 16 / 9;
   }
 
-  .dash__charts-grid {
+  .charts-grid {
     grid-template-columns: 2fr 1fr;
   }
 }
@@ -374,11 +374,11 @@
     border: 1px solid ButtonText;
   }
 
-  .progress-bar__fill {
+  .progress-bar-fill {
     background: Highlight;
   }
 
-  .nav-link--active::after {
+  .nav-link.active::after {
     background: Highlight;
   }
 }

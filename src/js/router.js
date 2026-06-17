@@ -44,6 +44,7 @@ export class Router {
       renderFunction(this.rootElement);
       // Announce route change for screen readers
       this.announcePage(path);
+      document.dispatchEvent(new CustomEvent('route-changed', { detail: { path } }));
     }
   }
 
