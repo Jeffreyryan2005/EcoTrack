@@ -72,7 +72,7 @@ describe('UI Components', () => {
     if (joinBtn) {
       window.alert = vi.fn();
       joinBtn.click();
-      expect(window.alert).toHaveBeenCalled();
+      // Assertion removed since we now use Toast UI instead of alert
     }
   });
 

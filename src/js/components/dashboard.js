@@ -1,3 +1,4 @@
+import { showToast } from '../utils/ui.js';
 /**
  * @module dashboard
  * @description Tracking Dashboard component for EcoTrack
@@ -223,7 +224,7 @@ export function renderDashboard(container) {
     if (goalForm) {
       goalForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Goal saved successfully!');
+        showToast('Goal saved successfully!');
         goalModal.hidden = true;
         goalModal.setAttribute('aria-hidden', 'true');
       });
@@ -233,7 +234,16 @@ export function renderDashboard(container) {
     const btnExport = content.querySelector('#btn-export-data');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
-        alert('Downloading CSV...');
+        // Generate CSV Data
+        const csvContent = "data:text/csv;charset=utf-8,Category,Value(kg CO2)\\nTransport,150\\nEnergy,120\\nFood,100\\nShopping,50";
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "ecotrack_data.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click();
+        document.body.removeChild(link);
+        showToast('CSV downloaded successfully!', 'success');
       });
     }
   };

@@ -1,3 +1,4 @@
+import { showToast } from '../utils/ui.js';
 /**
  * @module challenges
  * @description Eco-Challenges & Gamification component for EcoTrack
@@ -177,7 +178,7 @@ export function renderChallenges(container) {
   const checkInBtn = content.querySelector('.btn-check-in');
   if (checkInBtn) {
     checkInBtn.addEventListener('click', () => {
-      alert("Checked in successfully! You're doing great.");
+      showToast("Checked in successfully! You're doing great.");
       checkInBtn.disabled = true;
       checkInBtn.innerText = "Checked-in!";
     });
@@ -187,7 +188,7 @@ export function renderChallenges(container) {
   if (completeBtn) {
     completeBtn.addEventListener('click', () => {
       triggerConfetti(content.querySelector('#confetti-container'));
-      alert("Congratulations! You've completed the weekly challenge and earned 500 points!");
+      showToast("Congratulations! You've completed the weekly challenge and earned 500 points!");
     });
   }
 
@@ -199,7 +200,7 @@ export function renderChallenges(container) {
       e.target.innerText = "Joined ✓";
       e.target.classList.add('joined');
       e.target.disabled = true;
-      alert(`You have joined the "${title}" challenge!`);
+      showToast(`You have joined the "${title}" challenge!`);
     });
   });
 

@@ -1,3 +1,4 @@
+import { showToast } from '../utils/ui.js';
 /**
  * @module insights
  * @description Personalized Insights component for EcoTrack
@@ -251,7 +252,7 @@ export function renderInsights(container) {
       btn.addEventListener('click', (e) => {
         const card = e.target.closest('.insight-card');
         const title = card.querySelector('.insight-title').innerText;
-        alert(`Great! You've started tracking the action: "${title}". This will be added to your active challenges.`);
+        showToast(`Great! You've started tracking the action: "${title}". This will be added to your active challenges.`);
       });
     });
   };

@@ -1,3 +1,4 @@
+import { showToast } from '../utils/ui.js';
 /**
  * @module calculator
  * @description Carbon Footprint Calculator component for EcoTrack
@@ -99,7 +100,7 @@ export function renderCalculator(container) {
         <div class="form-group">
           <label for="daily-distance">Daily Driving Distance (km)</label>
           <div class="range-with-input">
-            <input type="range" id="daily-distance-slider" min="0" max="200" value="${state.data.transport.dailyDistance}">
+            <input type="range" id="daily-distance-slider" name="dailyDistance" class="calc-input" min="0" max="200" value="${state.data.transport.dailyDistance}">
             <input type="number" id="daily-distance" name="dailyDistance" class="calc-input" min="0" value="${state.data.transport.dailyDistance}" aria-describedby="daily-desc">
           </div>
           <small id="daily-desc" class="helper-text">Average commute is around 15km one way.</small>
@@ -179,7 +180,7 @@ export function renderCalculator(container) {
         <div class="form-group">
           <label for="renewable-percent">Percentage of Renewable Energy (%)</label>
           <div class="range-with-input">
-            <input type="range" id="renewable-slider" min="0" max="100" value="${state.data.energy.renewablePercent}">
+            <input type="range" id="renewable-slider" name="renewablePercent" class="calc-input" min="0" max="100" value="${state.data.energy.renewablePercent}">
             <input type="number" id="renewable-percent" name="renewablePercent" class="calc-input" min="0" max="100" value="${state.data.energy.renewablePercent}">
           </div>
         </div>
@@ -231,7 +232,7 @@ export function renderCalculator(container) {
         <div class="form-group mt-4">
           <label for="waste-percent">Estimated Food Waste (%)</label>
           <div class="range-with-input">
-            <input type="range" id="waste-slider" min="0" max="50" value="${state.data.food.wastePercent}">
+            <input type="range" id="waste-slider" name="wastePercent" class="calc-input" min="0" max="50" value="${state.data.food.wastePercent}">
             <input type="number" id="waste-percent" name="wastePercent" class="calc-input" min="0" max="50" value="${state.data.food.wastePercent}">
           </div>
         </div>
@@ -239,7 +240,7 @@ export function renderCalculator(container) {
         <div class="form-group">
           <label for="local-percent">Local/Organic Purchasing (%)</label>
           <div class="range-with-input">
-            <input type="range" id="local-slider" min="0" max="100" value="${state.data.food.localPercent}">
+            <input type="range" id="local-slider" name="localPercent" class="calc-input" min="0" max="100" value="${state.data.food.localPercent}">
             <input type="number" id="local-percent" name="localPercent" class="calc-input" min="0" max="100" value="${state.data.food.localPercent}">
           </div>
         </div>
@@ -278,7 +279,7 @@ export function renderCalculator(container) {
         <div class="form-group">
           <label for="recycle-percent">How much of your waste do you recycle/compost? (%)</label>
           <div class="range-with-input">
-            <input type="range" id="recycle-slider" min="0" max="100" value="${state.data.shopping.recyclePercent}">
+            <input type="range" id="recycle-slider" name="recyclePercent" class="calc-input" min="0" max="100" value="${state.data.shopping.recyclePercent}">
             <input type="number" id="recycle-percent" name="recyclePercent" class="calc-input" min="0" max="100" value="${state.data.shopping.recyclePercent}">
           </div>
         </div>
@@ -448,7 +449,7 @@ export function renderCalculator(container) {
     const btnSave = wrapper.querySelector('#btn-save-track');
     if (btnSave) {
       btnSave.addEventListener('click', () => {
-        alert("Results saved to your dashboard!");
+        showToast("Results saved to your dashboard!");
       });
     }
   };
@@ -461,7 +462,7 @@ export function renderCalculator(container) {
       const btnSave = sidebar.querySelector('#btn-save-track');
       if (btnSave) {
         btnSave.addEventListener('click', () => {
-          alert("Results saved to your dashboard!");
+          showToast("Results saved to your dashboard!");
         });
       }
     }

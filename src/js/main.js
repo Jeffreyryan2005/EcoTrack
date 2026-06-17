@@ -9,6 +9,9 @@ import { renderDashboard } from './components/dashboard.js';
 import { renderInsights } from './components/insights.js';
 import { renderChallenges } from './components/challenges.js';
 import { renderEducation } from './components/education.js';
+import { renderAssistantModal } from './components/assistant.js';
+import { SecureStorage } from './utils/storage.js';
+import { sanitizeHTML } from './utils/sanitize.js';
 
 // Setup accessibility stub
 function setupAccessibility() {
@@ -24,12 +27,7 @@ function setupAccessibility() {
   });
 }
 
-// Storage mock for main
-class SecureStorage {
-  constructor(prefix) { this.prefix = prefix; }
-  get(key) { return localStorage.getItem(`${this.prefix}_${key}`); }
-  set(key, val) { localStorage.setItem(`${this.prefix}_${key}`, val); }
-}
+// Main storage instance will be initialized in DOMContentLoaded
 
 // Initialize application
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,17 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
   
   router.init();
 
+  // Setup Modal Closing globally
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalClose = document.getElementById('modal-close');
+  const modalContent = document.getElementById('modal-content');
+  
+  if (modalOverlay && modalClose) {
+    const closeModal = () => {
+      modalOverlay.hidden = true;
+      modalOverlay.setAttribute('aria-hidden', 'true');
+    };
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
   // Setup AI FAB listener
   const aiFab = document.getElementById('ai-fab');
-  if (aiFab) {
+  if (aiFab && modalOverlay && modalContent) {
     aiFab.addEventListener('click', () => {
-      // Use router to navigate to insights
-      window.location.hash = '#insights';
-      // Fallback if hash routing is disabled
-      if (!window.location.hash) {
-        window.history.pushState(null, null, '/insights');
-        router.handleRoute();
-      }
+      renderAssistantModal(modalContent, modalOverlay);
     });
   }
 });
