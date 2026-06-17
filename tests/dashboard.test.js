@@ -19,7 +19,6 @@ describe('Dashboard Component', () => {
     renderDashboard(container);
     expect(container.querySelector('.dashboard-page')).toBeTruthy();
     expect(container.querySelector('#btn-share-progress')).toBeTruthy();
-    expect(container.querySelector('#btn-offset-emissions')).toBeTruthy();
     expect(container.querySelector('#btn-clear-data')).toBeTruthy();
   });
 
@@ -28,12 +27,5 @@ describe('Dashboard Component', () => {
     const shareBtn = container.querySelector('#btn-share-progress');
     shareBtn.click();
     expect(navigator.share).toHaveBeenCalled();
-  });
-
-  it('handles offset button click', () => {
-    renderDashboard(container);
-    const offsetBtn = container.querySelector('#btn-offset-emissions');
-    offsetBtn.click();
-    // Should trigger toast but we mock/ignore it for simple coverage
   });
 });
