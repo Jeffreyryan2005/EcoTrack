@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = () => {
       modalOverlay.hidden = true;
       modalOverlay.setAttribute('aria-hidden', 'true');
+      modalOverlay.classList.remove('assistant-overlay');
     };
     modalClose.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', (e) => {
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const aiFab = document.getElementById('ai-fab');
   if (aiFab && modalOverlay && modalContent) {
     aiFab.addEventListener('click', () => {
+      modalOverlay.classList.add('assistant-overlay');
       renderAssistantModal(modalContent, modalOverlay);
     });
   }

@@ -3,7 +3,7 @@
  * @description Groq-powered AI Assistant
  */
 
-const GROQ_API_KEY = 'gsk_' + 'ZYO3BeyLRqyHS4jDUiFoWGdyb3FYeZ6jHKO6Ftaeb9963nvXBVnH';
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 export function renderAssistantModal(modalContent, overlay) {
@@ -73,6 +73,10 @@ export function renderAssistantModal(modalContent, overlay) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
+      if (!GROQ_API_KEY) {
+        throw new Error("Missing API Key! Please set VITE_GROQ_API_KEY in your Vercel environment variables.");
+      }
+
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -104,7 +108,7 @@ export function renderAssistantModal(modalContent, overlay) {
     } catch (err) {
       console.error(err);
       loadingDiv.remove();
-      appendMessage('assistant', "Sorry, I'm having trouble connecting right now.");
+      appendMessage('assistant', err.message || "Sorry, I'm having trouble connecting right now.");
     }
   });
 
