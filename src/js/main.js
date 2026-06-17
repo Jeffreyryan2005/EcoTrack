@@ -11,7 +11,7 @@ import { renderChallenges } from './components/challenges.js';
 import { renderEducation } from './components/education.js';
 import { initAssistant } from './components/assistant.js';
 import { SecureStorage } from './utils/storage.js';
-import { sanitizeHTML } from './utils/sanitize.js';
+
 
 // Setup accessibility stub
 function setupAccessibility() {

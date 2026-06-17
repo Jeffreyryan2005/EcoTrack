@@ -376,6 +376,7 @@ export function renderCalculator(container) {
     };
   };
 
+  // eslint-disable-next-line no-unused-vars
   const updateStateAndRender = debounce((tab, key, value, type) => {
     let parsedValue = value;
     if (type === 'number' || type === 'range') parsedValue = parseFloat(value) || 0;

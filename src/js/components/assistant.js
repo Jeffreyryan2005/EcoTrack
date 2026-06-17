@@ -55,7 +55,7 @@ function createChatWidget() {
       const d = stored.value;
       userContext = `Transport: ${d.transport?.dailyDistance || '?'}km/day, Diet: ${d.food?.beef || '?'} meals, Renewable: ${d.energy?.renewablePercent || '?'}%`;
     }
-  } catch (e) { /* ignore */ }
+  } catch (_e) { /* ignore */ }
 
   messagesHistory = [
     { role: 'system', content: `You are EcoAssistant, a friendly sustainability advisor for EcoTrack. Keep answers under 100 words, practical, and encouraging. User context: ${userContext}` }

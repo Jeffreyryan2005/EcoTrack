@@ -633,7 +633,7 @@ export function validateEmissionEntry(entry) {
  * @returns {{ min: number, max: number, warnAbove: number }}
  * @private
  */
-function _getAmountLimits(category, type) {
+function _getAmountLimits(category, _type) {
   const defaults = { min: 0, max: 100000, warnAbove: 10000 };
 
   const limitsMap = {

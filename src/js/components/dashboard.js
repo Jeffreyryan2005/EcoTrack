@@ -80,6 +80,8 @@ export function renderDashboard(container) {
         <div class="dashboard-actions">
           <button id="btn-set-goal" class="btn-secondary">Set Goal</button>
           <button id="btn-export-data" class="btn-secondary">Export CSV</button>
+          <button id="btn-share-progress" class="btn-primary">Share Progress</button>
+          <button id="btn-clear-data" class="btn-danger" style="background:var(--error-color); color:white;">Clear Data</button>
         </div>
       </div>
     `;
@@ -244,6 +246,40 @@ export function renderDashboard(container) {
         link.click();
         document.body.removeChild(link);
         showToast('CSV downloaded successfully!', 'success');
+      });
+    }
+
+    // Share logic
+    const btnShare = content.querySelector('#btn-share-progress');
+    if (btnShare) {
+      btnShare.addEventListener('click', () => {
+        const text = `I'm tracking my carbon footprint with EcoTrack! My emissions trend is down ${Math.abs(stats.trend)}%. Join me and start tracking yours to save the planet! 🌍💚\n\n#EcoTrack #Sustainability #CarbonFootprint`;
+        const url = window.location.origin;
+        
+        if (navigator.share) {
+          navigator.share({
+            title: 'EcoTrack - My Carbon Footprint',
+            text: text,
+            url: url
+          }).catch(err => console.warn('Share failed:', err));
+        } else {
+          navigator.clipboard.writeText(`${text}\n${url}`)
+            .then(() => showToast('Share text copied to clipboard!', 'success'))
+            .catch(() => showToast('Failed to copy share text.', 'error'));
+        }
+      });
+    }
+
+    // Clear Data logic
+    const btnClear = content.querySelector('#btn-clear-data');
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        if (confirm('Are you sure you want to completely erase all your tracking data? This cannot be undone.')) {
+          localStorage.clear();
+          showToast('All tracking data cleared.', 'success');
+          // Reload page after a short delay
+          setTimeout(() => window.location.reload(), 1500);
+        }
       });
     }
   };

@@ -230,7 +230,7 @@ export function renderInsights(container) {
 
     const toggleBtns = content.querySelectorAll('.btn-toggle-steps');
     toggleBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', (_e) => {
         const isExpanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', !isExpanded);
         

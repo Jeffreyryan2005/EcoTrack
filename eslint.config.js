@@ -26,7 +26,18 @@ export default [
                 Event: "readonly",
                 CustomEvent: "readonly",
                 getComputedStyle: "readonly",
-                Blob: "readonly"
+                Blob: "readonly",
+                fetch: "readonly",
+                requestAnimationFrame: "readonly",
+                navigator: "readonly",
+                Promise: "readonly",
+                Date: "readonly",
+                Error: "readonly",
+                parseInt: "readonly",
+                sessionStorage: "readonly",
+                location: "readonly",
+                IntersectionObserver: "readonly",
+                FormData: "readonly"
             }
         },
         rules: {

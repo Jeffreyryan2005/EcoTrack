@@ -113,7 +113,7 @@ const ALL_INSIGHTS = [
       'Stock up on plant-based proteins like lentils, chickpeas, or tofu.',
       'Get the whole household involved.'
     ],
-    calculateSaving: (userData) => {
+    calculateSaving: (_userData) => {
       // roughly replacing 1 day of beef with veg
       return (calculateFoodEmission('beef', 0.2) - calculateFoodEmission('vegetables', 0.2)) * 52; 
     }

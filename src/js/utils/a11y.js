@@ -64,7 +64,6 @@ export function trapFocus(element) {
   if (focusableElements.length === 0) return;
   
   const firstFocusableElement = focusableElements[0];
-  const lastFocusableElement = focusableElements[focusableElements.length - 1];
   
   element.addEventListener('keydown', handleTrapKeydown);
   firstFocusableElement.focus();
