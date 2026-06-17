@@ -1,0 +1,38 @@
+{
+  "name": "ecotrack",
+  "version": "1.0.0",
+  "description": "EcoTrack - Carbon Footprint Awareness Platform. Track, understand, and reduce your carbon footprint through personalized insights and actionable recommendations.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/**/*.js",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [
+    "carbon-footprint",
+    "sustainability",
+    "eco-tracker",
+    "climate-action",
+    "green-living"
+  ],
+  "author": "EcoTrack Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^3.2.1",
+    "chart.js": "^4.5.1",
+    "eslint": "^9.28.0",
+    "gh-pages": "^6.3.0",
+    "jsdom": "^26.1.0",
+    "terser": "^5.48.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.1"
+  },
+  "dependencies": {
+    "dompurify": "^3.2.6"
+  }
+}

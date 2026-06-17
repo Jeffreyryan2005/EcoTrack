@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Core Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO Meta -->
+  <title>EcoTrack — Carbon Footprint Awareness Platform</title>
+  <meta name="description" content="Track, understand, and reduce your carbon footprint with EcoTrack. Get personalized insights, actionable recommendations, and join challenges to make a real impact on climate change." />
+  <meta name="keywords" content="carbon footprint, sustainability, eco tracker, climate action, green living, carbon calculator, emissions tracking" />
+  <meta name="author" content="EcoTrack Team" />
+  <meta name="theme-color" content="#0d3b2e" />
+  <meta name="color-scheme" content="dark light" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EcoTrack — Carbon Footprint Awareness Platform" />
+  <meta property="og:description" content="Track, understand, and reduce your carbon footprint with personalized insights and actionable recommendations." />
+  <meta property="og:image" content="./assets/og-image.png" />
+  <meta property="og:url" content="https://ecotrack.app" />
+  <meta property="og:site_name" content="EcoTrack" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EcoTrack — Carbon Footprint Awareness Platform" />
+  <meta name="twitter:description" content="Track, understand, and reduce your carbon footprint with personalized insights and actionable recommendations." />
+  <meta name="twitter:image" content="./assets/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/css/variables.css" />
+  <link rel="stylesheet" href="./src/css/base.css" />
+  <link rel="stylesheet" href="./src/css/components.css" />
+  <link rel="stylesheet" href="./src/css/responsive.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+</head>
+<body>
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link" id="skip-nav">
+    Skip to main content
+  </a>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav__container">
+        <!-- Logo -->
+        <a href="#home" class="nav__logo" id="nav-logo" aria-label="EcoTrack Home">
+          <span class="nav__logo-icon" aria-hidden="true">🌿</span>
+          <span class="nav__logo-text">EcoTrack</span>
+        </a>
+
+        <!-- Hamburger Toggle (Mobile) -->
+        <button
+          class="nav__toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <ul class="nav__menu" id="nav-menu" role="menubar">
+          <li class="nav__item" role="none">
+            <a
+              href="#home"
+              class="nav__link nav__link--active"
+              id="nav-link-home"
+              role="menuitem"
+              data-route="home"
+              aria-current="page"
+            >
+              <span class="nav__link-icon" aria-hidden="true">🏠</span>
+              <span class="nav__link-text">Home</span>
+            </a>
+          </li>
+          <li class="nav__item" role="none">
+            <a
+              href="#calculator"
+              class="nav__link"
+              id="nav-link-calculator"
+              role="menuitem"
+              data-route="calculator"
+            >
+              <span class="nav__link-icon" aria-hidden="true">🧮</span>
+              <span class="nav__link-text">Calculator</span>
+            </a>
+          </li>
+          <li class="nav__item" role="none">
+            <a
+              href="#dashboard"
+              class="nav__link"
+              id="nav-link-dashboard"
+              role="menuitem"
+              data-route="dashboard"
+            >
+              <span class="nav__link-icon" aria-hidden="true">📊</span>
+              <span class="nav__link-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav__item" role="none">
+            <a
+              href="#insights"
+              class="nav__link"
+              id="nav-link-insights"
+              role="menuitem"
+              data-route="insights"
+            >
+              <span class="nav__link-icon" aria-hidden="true">💡</span>
+              <span class="nav__link-text">Insights</span>
+            </a>
+          </li>
+          <li class="nav__item" role="none">
+            <a
+              href="#challenges"
+              class="nav__link"
+              id="nav-link-challenges"
+              role="menuitem"
+              data-route="challenges"
+            >
+              <span class="nav__link-icon" aria-hidden="true">🏆</span>
+              <span class="nav__link-text">Challenges</span>
+            </a>
+          </li>
+          <li class="nav__item" role="none">
+            <a
+              href="#learn"
+              class="nav__link"
+              id="nav-link-learn"
+              role="menuitem"
+              data-route="learn"
+            >
+              <span class="nav__link-icon" aria-hidden="true">📚</span>
+              <span class="nav__link-text">Learn</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Theme Toggle -->
+        <button
+          class="nav__theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark/light mode"
+          title="Toggle theme"
+        >
+          <span class="nav__theme-icon nav__theme-icon--dark" aria-hidden="true">🌙</span>
+          <span class="nav__theme-icon nav__theme-icon--light" aria-hidden="true">☀️</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content" class="main">
+    <div id="app" class="app-container">
+      <!-- Dynamic content rendered here by JavaScript router -->
+
+      <!-- ==================== HOME / HERO SECTION ==================== -->
+      <section class="hero" id="section-home" aria-labelledby="hero-heading">
+        <!-- Animated background orbs -->
+        <div class="hero__bg" aria-hidden="true">
+          <div class="hero__orb hero__orb--1"></div>
+          <div class="hero__orb hero__orb--2"></div>
+          <div class="hero__orb hero__orb--3"></div>
+        </div>
+
+        <div class="hero__content">
+          <div class="hero__badge" aria-hidden="true">
+            <span class="hero__badge-dot"></span>
+            Open Source &middot; Free Forever
+          </div>
+
+          <h1 class="hero__title" id="hero-heading">
+            Track Your Impact.
+            <span class="hero__title-highlight">Save the Planet.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            Understand your carbon footprint with real-time calculations, personalized
+            insights, and actionable challenges. Join thousands making a measurable
+            difference for our planet.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#calculator" class="btn btn-primary btn-lg" id="hero-cta-primary" data-route="calculator">
+              <span aria-hidden="true">🧮</span>
+              Calculate My Footprint
+            </a>
+            <a href="#learn" class="btn btn-secondary btn-lg" id="hero-cta-secondary" data-route="learn">
+              <span aria-hidden="true">📖</span>
+              Learn More
+            </a>
+          </div>
+
+          <!-- Floating Stats -->
+          <div class="hero__stats" aria-label="Platform statistics">
+            <div class="hero__stat-card">
+              <span class="hero__stat-value" id="stat-users">12,847</span>
+              <span class="hero__stat-label">Active Users</span>
+            </div>
+            <div class="hero__stat-card">
+              <span class="hero__stat-value" id="stat-co2">2.4M</span>
+              <span class="hero__stat-label">kg CO₂ Tracked</span>
+            </div>
+            <div class="hero__stat-card">
+              <span class="hero__stat-value" id="stat-reduction">18%</span>
+              <span class="hero__stat-label">Avg. Reduction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating eco icons -->
+        <div class="hero__floating" aria-hidden="true">
+          <span class="hero__float-icon hero__float-icon--1">🌱</span>
+          <span class="hero__float-icon hero__float-icon--2">🌍</span>
+          <span class="hero__float-icon hero__float-icon--3">♻️</span>
+          <span class="hero__float-icon hero__float-icon--4">⚡</span>
+          <span class="hero__float-icon hero__float-icon--5">🌊</span>
+          <span class="hero__float-icon hero__float-icon--6">🍃</span>
+        </div>
+      </section>
+
+      <!-- ==================== FEATURES PREVIEW ==================== -->
+      <section class="features" id="section-features" aria-labelledby="features-heading">
+        <div class="container">
+          <h2 class="section-title" id="features-heading">
+            Everything you need to <span class="text-gradient">go green</span>
+          </h2>
+          <p class="section-subtitle">
+            Powerful tools designed to make sustainability simple, measurable, and rewarding.
+          </p>
+
+          <div class="features__grid">
+            <article class="feature-card" id="feature-calculator">
+              <div class="feature-card__icon" aria-hidden="true">🧮</div>
+              <h3 class="feature-card__title">Smart Calculator</h3>
+              <p class="feature-card__desc">
+                Calculate emissions across transport, energy, food, and shopping with
+                science-backed conversion factors from EPA and DEFRA.
+              </p>
+            </article>
+
+            <article class="feature-card" id="feature-dashboard">
+              <div class="feature-card__icon" aria-hidden="true">📊</div>
+              <h3 class="feature-card__title">Live Dashboard</h3>
+              <p class="feature-card__desc">
+                Visualize your carbon data with interactive charts, trend analysis,
+                and category breakdowns updated in real time.
+              </p>
+            </article>
+
+            <article class="feature-card" id="feature-insights">
+              <div class="feature-card__icon" aria-hidden="true">💡</div>
+              <h3 class="feature-card__title">AI Insights</h3>
+              <p class="feature-card__desc">
+                Get personalized recommendations ranked by impact. Know exactly where
+                to focus for maximum carbon reduction.
+              </p>
+            </article>
+
+            <article class="feature-card" id="feature-challenges">
+              <div class="feature-card__icon" aria-hidden="true">🏆</div>
+              <h3 class="feature-card__title">Weekly Challenges</h3>
+              <p class="feature-card__desc">
+                Earn points, build streaks, and unlock achievements as you adopt
+                greener habits. Make sustainability fun.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" id="site-footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo" aria-label="EcoTrack Home">
+            <span aria-hidden="true">🌿</span> EcoTrack
+          </a>
+          <p class="footer__tagline">
+            Making carbon awareness accessible, actionable, and rewarding for everyone.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__links">
+          <h4 class="footer__heading">Platform</h4>
+          <ul class="footer__list">
+            <li><a href="#calculator" data-route="calculator">Calculator</a></li>
+            <li><a href="#dashboard" data-route="dashboard">Dashboard</a></li>
+            <li><a href="#insights" data-route="insights">Insights</a></li>
+            <li><a href="#challenges" data-route="challenges">Challenges</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer__links">
+          <h4 class="footer__heading">Resources</h4>
+          <ul class="footer__list">
+            <li><a href="#learn" data-route="learn">Learning Center</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#api">API Docs</a></li>
+          </ul>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="footer__links">
+          <h4 class="footer__heading">Accessibility</h4>
+          <ul class="footer__list">
+            <li><a href="#accessibility-statement">Accessibility Statement</a></li>
+            <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+            <li><a href="#high-contrast">High Contrast Mode</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; 2026 EcoTrack. Built with 💚 for the planet. MIT License.
+        </p>
+        <p class="footer__a11y-note">
+          <span aria-hidden="true">♿</span>
+          This application strives for WCAG 2.1 AA compliance. 
+          <a href="#accessibility-statement">Read our accessibility statement</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST CONTAINER ==================== -->
+  <div class="toast-container" id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ==================== MODAL OVERLAY ==================== -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modal-close" type="button" aria-label="Close dialog">
+        &times;
+      </button>
+      <div class="modal__content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Application Script -->
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
