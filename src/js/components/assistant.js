@@ -3,8 +3,7 @@
  * @description Groq-powered AI Assistant
  */
 
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
-const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const API_URL = '/api/chat';
 
 export function renderAssistantModal(modalContent, overlay) {
   // Setup HTML for Chat UI
@@ -25,6 +24,19 @@ export function renderAssistantModal(modalContent, overlay) {
       </form>
     </div>
   `;
+
+  // Apply Inline Styles to GUARANTEE Bottom Right Corner Positioning
+  overlay.style.alignItems = 'flex-end';
+  overlay.style.justifyContent = 'flex-end';
+  overlay.style.padding = '2rem';
+  
+  const modal = modalContent.parentElement;
+  if (modal) {
+    modal.style.margin = '0';
+    modal.style.width = '400px';
+    modal.style.maxWidth = '100%';
+    modal.style.maxHeight = 'calc(100vh - 100px)';
+  }
 
   // Show Modal
   overlay.hidden = false;
@@ -73,14 +85,9 @@ export function renderAssistantModal(modalContent, overlay) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
-      if (!GROQ_API_KEY) {
-        throw new Error("Missing API Key! Please set VITE_GROQ_API_KEY in your Vercel environment variables.");
-      }
-
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -91,11 +98,12 @@ export function renderAssistantModal(modalContent, overlay) {
         })
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error('Failed to fetch from Groq API');
+        throw new Error(data.error?.message || 'Failed to fetch from server API');
       }
 
-      const data = await response.json();
       const aiReply = data.choices[0].message.content;
 
       // Remove loading
