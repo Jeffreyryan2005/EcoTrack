@@ -24,6 +24,7 @@ export default [
                 Object: "readonly",
                 Array: "readonly",
                 Event: "readonly",
+                confirm: "readonly",
                 CustomEvent: "readonly",
                 getComputedStyle: "readonly",
                 Blob: "readonly",

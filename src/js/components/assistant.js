@@ -4,6 +4,7 @@
  */
 
 const API_URL = '/api/chat';
+import { sanitizeHTML } from '../utils/sanitize.js';
 
 let chatWidgetOpen = false;
 let chatWidget = null;
@@ -78,8 +79,10 @@ function createChatWidget() {
     const text = input.value.trim();
     if (!text) return;
 
-    addMessage('user', text);
-    messagesHistory.push({ role: 'user', content: text });
+    const safeText = sanitizeHTML(text);
+
+    addMessage('user', safeText);
+    messagesHistory.push({ role: 'user', content: safeText });
     input.value = '';
 
     // Show typing indicator
@@ -110,11 +113,11 @@ function createChatWidget() {
 
       const reply = data.choices[0].message.content;
       typing.remove();
-      addMessage('assistant', reply);
-      messagesHistory.push({ role: 'assistant', content: reply });
+      const safeReply = sanitizeHTML(reply);
+      addMessage('assistant', safeReply);
+      messagesHistory.push({ role: 'assistant', content: safeReply });
 
     } catch (err) {
-      console.error('AI Chat Error:', err);
       typing.remove();
       addMessage('assistant', `⚠️ ${err.message}`);
     }

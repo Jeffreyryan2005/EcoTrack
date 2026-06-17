@@ -78,10 +78,11 @@ export function renderDashboard(container) {
           ${buttons}
         </div>
         <div class="dashboard-actions">
-          <button id="btn-set-goal" class="btn-secondary">Set Goal</button>
-          <button id="btn-export-data" class="btn-secondary">Export CSV</button>
-          <button id="btn-share-progress" class="btn-primary">Share Progress</button>
-          <button id="btn-clear-data" class="btn-danger" style="background:var(--error-color); color:white;">Clear Data</button>
+          <button type="button" id="btn-set-goal" class="btn-secondary">Set Goal</button>
+          <button type="button" id="btn-export-data" class="btn-secondary">Export CSV</button>
+          <button type="button" id="btn-share-progress" class="btn-primary">Share Progress</button>
+          <button type="button" id="btn-offset-emissions" class="btn-primary" style="background:var(--secondary-color);">Offset Emissions</button>
+          <button type="button" id="btn-clear-data" class="btn-danger" style="background:var(--error-color); color:white;">Clear Data</button>
         </div>
       </div>
     `;
@@ -249,6 +250,15 @@ export function renderDashboard(container) {
       });
     }
 
+    // Offset Emissions logic
+    const btnOffset = content.querySelector('#btn-offset-emissions');
+    if (btnOffset) {
+      btnOffset.addEventListener('click', () => {
+        showToast('Redirecting to carbon offset partners (mocked)', 'success');
+        // In a real app, this would open a modal to buy carbon credits or plant trees
+      });
+    }
+
     // Share logic
     const btnShare = content.querySelector('#btn-share-progress');
     if (btnShare) {
@@ -261,7 +271,7 @@ export function renderDashboard(container) {
             title: 'EcoTrack - My Carbon Footprint',
             text: text,
             url: url
-          }).catch(err => console.warn('Share failed:', err));
+          }).catch(() => showToast('Share cancelled or failed', 'error'));
         } else {
           navigator.clipboard.writeText(`${text}\n${url}`)
             .then(() => showToast('Share text copied to clipboard!', 'success'))

@@ -161,6 +161,52 @@ export function renderChallenges(container) {
     `;
   };
 
+  const renderLeaderboard = () => {
+    return `
+      <section class="leaderboard-section" aria-labelledby="leaderboard-title">
+        <h2 id="leaderboard-title">Global Leaderboard</h2>
+        <div class="leaderboard-container" style="background:var(--bg-secondary); border-radius:var(--radius-lg); padding:var(--spacing-md); margin-top:var(--spacing-lg);">
+          <table style="width:100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
+                <th style="padding: 10px;">Rank</th>
+                <th style="padding: 10px;">User</th>
+                <th style="padding: 10px;">Points</th>
+                <th style="padding: 10px;">CO₂ Saved</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px;">🥇 1</td>
+                <td style="padding: 10px;">EcoWarrior99</td>
+                <td style="padding: 10px;">4,200</td>
+                <td style="padding: 10px;">850 kg</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px;">🥈 2</td>
+                <td style="padding: 10px;">GreenThumb</td>
+                <td style="padding: 10px;">3,850</td>
+                <td style="padding: 10px;">720 kg</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px;">🥉 3</td>
+                <td style="padding: 10px;">PlanetSaver</td>
+                <td style="padding: 10px;">3,100</td>
+                <td style="padding: 10px;">600 kg</td>
+              </tr>
+              <tr style="background: rgba(46, 204, 113, 0.1);">
+                <td style="padding: 10px;">⭐ 42</td>
+                <td style="padding: 10px;"><strong>You</strong></td>
+                <td style="padding: 10px;"><strong>${userStats.totalPoints}</strong></td>
+                <td style="padding: 10px;"><strong>${userStats.co2Saved}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    `;
+  };
+
   content.innerHTML = `
     <div class="challenges-header">
       <h1>Eco-Challenges</h1>
@@ -169,6 +215,7 @@ export function renderChallenges(container) {
     ${renderStats()}
     ${renderWeeklyChallenge()}
     ${renderAvailableChallenges()}
+    ${renderLeaderboard()}
     ${renderBadges()}
     
     <div id="confetti-container" class="confetti-container" aria-hidden="true"></div>
