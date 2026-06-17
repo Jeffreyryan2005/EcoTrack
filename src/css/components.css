@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(var(--bg-primary-rgb), 0.85);
+  background-color: var(--bg-primary);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
