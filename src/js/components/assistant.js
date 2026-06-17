@@ -23,7 +23,7 @@ function createChatWidget() {
     <div class="ai-chat-header">
       <div>
         <strong>✨ Smart EcoAssistant</strong>
-        <span style="display:block;font-size:0.75rem;opacity:0.7;">Powered by Groq Llama 3</span>
+        <span style="display:block;font-size:0.75rem;opacity:0.7;">Powered by Groq AI</span>
       </div>
       <button id="ai-chat-close" aria-label="Close chat">&times;</button>
     </div>
@@ -94,7 +94,7 @@ function createChatWidget() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'llama3-8b-8192',
+          model: 'llama-3.3-70b-versatile',
           messages: messagesHistory,
           temperature: 0.7,
           max_tokens: 256
