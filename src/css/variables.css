@@ -229,8 +229,8 @@
   --container-2xl:  1440px;
   --container-max:  1600px;
 
-  --nav-height:     72px;
-  --nav-height-mobile: 64px;
+  --nav-height:     64px;
+  --nav-height-mobile: 60px;
 
   /* ──────────────── Z-Index Scale ──────────────── */
   --z-deep:        -1;

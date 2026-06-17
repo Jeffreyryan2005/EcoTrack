@@ -44,19 +44,28 @@
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-md);
+  align-items: center;
+  height: 100%;
+  gap: var(--space-4, 16px);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .nav-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
+  padding: 0 var(--space-4, 16px);
   transition: all var(--transition-fast);
   position: relative;
 }
@@ -64,7 +73,7 @@
 .nav-link:hover,
 .nav-link:focus-visible {
   color: var(--text-primary);
-  background-color: var(--bg-secondary);
+  background-color: rgba(255, 255, 255, 0.05); /* subtle hover */
 }
 
 .nav-link.active {
@@ -75,9 +84,9 @@
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 10%;
-  width: 80%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 3px;
   background: var(--gradient-primary);
   border-radius: 3px 3px 0 0;
@@ -612,13 +621,24 @@ input[type="range"]::-webkit-slider-runnable-track {
     top: var(--nav-height, 72px);
     left: 0;
     width: 100%;
+    height: auto;
     flex-direction: column;
     background: var(--bg-primary);
-    padding: var(--space-5);
+    padding: 20px;
     display: none;
     box-shadow: var(--shadow-md);
     border-bottom: 1px solid var(--border-color);
     z-index: var(--z-nav, 500);
+  }
+  .nav-item {
+    height: auto;
+    width: 100%;
+  }
+  .nav-link {
+    height: auto;
+    padding: 12px;
+    width: 100%;
+    border-radius: var(--radius-md);
   }
   .nav-links.active {
     display: flex;
