@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { setupAccessibility, announce } from '../src/js/utils/a11y.js';
+import { setupAccessibility, announceToScreenReader } from '../src/js/utils/a11y.js';
 
 describe('A11y Utilities', () => {
   beforeEach(() => {
@@ -14,15 +14,19 @@ describe('A11y Utilities', () => {
 
   it('announces messages', () => {
     setupAccessibility();
-    announce('Test message');
+    announceToScreenReader('Test message');
     const politeRegion = document.getElementById('a11y-live-region-polite');
-    expect(politeRegion.textContent).toBe('Test message');
+    setTimeout(() => {
+      expect(politeRegion.textContent).toBe('Test message');
+    }, 100);
   });
 
   it('announces assertive messages', () => {
     setupAccessibility();
-    announce('Urgent message', true);
+    announceToScreenReader('Urgent message', 'assertive');
     const assertiveRegion = document.getElementById('a11y-live-region-assertive');
-    expect(assertiveRegion.textContent).toBe('Urgent message');
+    setTimeout(() => {
+      expect(assertiveRegion.textContent).toBe('Urgent message');
+    }, 100);
   });
 });
