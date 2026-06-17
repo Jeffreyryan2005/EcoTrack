@@ -1,36 +1,28 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { A11yManager } from '../src/js/utils/a11y.js';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { setupAccessibility, announce } from '../src/js/utils/a11y.js';
 
-describe('A11yManager', () => {
-  let a11y;
-
+describe('A11y Utilities', () => {
   beforeEach(() => {
-    document.body.innerHTML = `
-      <div id="app"></div>
-      <button id="test-btn">Test</button>
-      <div role="dialog" id="dialog"></div>
-    `;
-    a11y = new A11yManager();
+    document.body.innerHTML = '';
   });
 
-  it('initializes and observes DOM', () => {
-    expect(a11y.initialized).toBe(false);
-    a11y.init();
-    expect(a11y.initialized).toBe(true);
-  });
-
-  it('manages focus traps', () => {
-    const dialog = document.getElementById('dialog');
-    a11y.trapFocus(dialog);
-    // Since trapFocus adds event listeners, we can just verify it didn't throw
-    expect(true).toBe(true);
-    a11y.releaseFocus(dialog);
+  it('sets up accessibility live regions', () => {
+    setupAccessibility();
+    expect(document.getElementById('a11y-live-region-polite')).toBeTruthy();
+    expect(document.getElementById('a11y-live-region-assertive')).toBeTruthy();
   });
 
   it('announces messages', () => {
-    a11y.init();
-    a11y.announce('Test message');
-    const announcer = document.getElementById('a11y-announcer');
-    expect(announcer.textContent).toBe('Test message');
+    setupAccessibility();
+    announce('Test message');
+    const politeRegion = document.getElementById('a11y-live-region-polite');
+    expect(politeRegion.textContent).toBe('Test message');
+  });
+
+  it('announces assertive messages', () => {
+    setupAccessibility();
+    announce('Urgent message', true);
+    const assertiveRegion = document.getElementById('a11y-live-region-assertive');
+    expect(assertiveRegion.textContent).toBe('Urgent message');
   });
 });

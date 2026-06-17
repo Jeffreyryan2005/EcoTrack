@@ -1,37 +1,31 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { setupNavbar } from '../src/js/components/navbar.js';
-import { router } from '../src/js/router.js';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { renderNavbar } from '../src/js/components/navbar.js';
 
 describe('Navbar Component', () => {
+  let container;
+
   beforeEach(() => {
     document.body.innerHTML = `
-      <nav class="navbar">
-        <a href="/" class="nav-brand">EcoTrack</a>
-        <button class="nav-toggle" aria-expanded="false"></button>
-        <div class="nav-links">
+      <header id="main-header">
+        <button id="nav-toggle" aria-expanded="false"></button>
+        <nav id="nav-menu">
           <a href="/" class="nav-link">Home</a>
           <a href="/calculator" class="nav-link">Calculator</a>
-        </div>
-      </nav>
+        </nav>
+        <button id="theme-toggle"></button>
+      </header>
     `;
-    vi.spyOn(router, 'navigate').mockImplementation(() => {});
+    container = document.getElementById('main-header');
   });
 
   it('sets up mobile toggle functionality', () => {
-    setupNavbar();
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
+    renderNavbar(container);
+    const toggleBtn = document.getElementById('nav-toggle');
+    const menu = document.getElementById('nav-menu');
     
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    toggle.click();
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
-    expect(links.classList.contains('active')).toBe(true);
-  });
-
-  it('handles navigation clicks', () => {
-    setupNavbar();
-    const link = document.querySelector('.nav-link[href="/calculator"]');
-    link.click();
-    expect(router.navigate).toHaveBeenCalledWith('/calculator');
+    expect(toggleBtn.getAttribute('aria-expanded')).toBe('false');
+    toggleBtn.click();
+    expect(toggleBtn.getAttribute('aria-expanded')).toBe('true');
+    expect(menu.classList.contains('active')).toBe(true);
   });
 });
