@@ -67,4 +67,25 @@ export function renderNavbar(container) {
       localStorage.setItem('ecotrack_theme', newTheme);
     });
   }
+
+  // Smart Navbar Scroll Logic
+  let lastScrollY = window.scrollY;
+  const navbar = document.getElementById('site-header');
+  
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      // If we scroll down past 100px, hide the navbar
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        navbar.classList.add('nav-hidden');
+      } 
+      // If we scroll up, show the navbar
+      else if (currentScrollY < lastScrollY) {
+        navbar.classList.remove('nav-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
 }
