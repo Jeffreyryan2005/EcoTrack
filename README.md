@@ -6,6 +6,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
   [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
   [![Vitest](https://img.shields.io/badge/-Vitest-729B1B?style=flat&logo=vitest&logoColor=white)](https://vitest.dev/)
+  [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://vitest.dev/)
   [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 </div>
 

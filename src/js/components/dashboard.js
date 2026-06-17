@@ -81,7 +81,7 @@ export function renderDashboard(container) {
           <button type="button" id="btn-set-goal" class="btn-secondary">Set Goal</button>
           <button type="button" id="btn-export-data" class="btn-secondary">Export CSV</button>
           <button type="button" id="btn-share-progress" class="btn-primary">Share Progress</button>
-          <button type="button" id="btn-clear-data" class="btn-danger" style="background:var(--error-color); color:white;">Clear Data</button>
+          <button type="button" id="btn-clear-data" class="btn-danger">Clear Data</button>
         </div>
       </div>
     `;

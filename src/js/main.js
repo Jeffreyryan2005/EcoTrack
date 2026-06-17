@@ -103,11 +103,11 @@ function renderHome(container) {
           </p>
 
           <div class="hero-actions">
-            <a href="#calculator" class="btn btn-primary btn-large" id="hero-cta-primary" data-link="calculator">
+            <a href="/calculator" class="btn btn-primary btn-large" id="hero-cta-primary" data-link="calculator" role="button">
               <span aria-hidden="true">🧮</span>
               Calculate My Footprint
             </a>
-            <a href="#learn" class="btn btn-secondary btn-large" id="hero-cta-secondary" data-link="learn">
+            <a href="/education" class="btn btn-secondary btn-large" id="hero-cta-secondary" data-link="learn" role="button">
               <span aria-hidden="true">📖</span>
               Learn More
             </a>
@@ -137,40 +137,44 @@ function renderHome(container) {
           </p>
 
           <div class="features-grid">
-            <article class="feature-card" id="feature-calculator">
-              <div class="feature-icon" aria-hidden="true">🧮</div>
-              <h3 >Smart Calculator</h3>
-              <p >
-                Calculate emissions across transport, energy, food, and shopping with
-                science-backed conversion factors from EPA and DEFRA.
-              </p>
-            </article>
-
-            <article class="feature-card" id="feature-dashboard">
+            <article class="feature-card animate-slide-up" style="animation-delay: 0.1s" aria-labelledby="feat-calc">
               <div class="feature-icon" aria-hidden="true">📊</div>
-              <h3 >Live Dashboard</h3>
-              <p >
-                Visualize your carbon data with interactive charts, trend analysis,
-                and category breakdowns updated in real time.
-              </p>
+              <h3 id="feat-calc">Smart Calculator</h3>
+              <p>Precise algorithms calculate your carbon footprint across transport, home, diet, and shopping habits.</p>
+              <ul class="feature-list">
+                <li><span aria-hidden="true">✓</span> Advanced metrics</li>
+                <li><span aria-hidden="true">✓</span> Real-time updates</li>
+              </ul>
             </article>
 
-            <article class="feature-card" id="feature-insights">
+            <article class="feature-card animate-slide-up" style="animation-delay: 0.2s" aria-labelledby="feat-dash">
+              <div class="feature-icon" aria-hidden="true">🎯</div>
+              <h3 id="feat-dash">Live Dashboard</h3>
+              <p>Visualize your environmental impact with beautiful, interactive charts and set achievable reduction goals.</p>
+              <ul class="feature-list">
+                <li><span aria-hidden="true">✓</span> Progress tracking</li>
+                <li><span aria-hidden="true">✓</span> Historical data</li>
+              </ul>
+            </article>
+
+            <article class="feature-card animate-slide-up" style="animation-delay: 0.3s" aria-labelledby="feat-ai">
               <div class="feature-icon" aria-hidden="true">💡</div>
-              <h3 >AI Insights</h3>
-              <p >
-                Get personalized recommendations ranked by impact. Know exactly where
-                to focus for maximum carbon reduction.
-              </p>
+              <h3 id="feat-ai">AI Insights</h3>
+              <p>Get personalized, actionable recommendations powered by artificial intelligence to reduce your emissions.</p>
+              <ul class="feature-list">
+                <li><span aria-hidden="true">✓</span> Smart suggestions</li>
+                <li><span aria-hidden="true">✓</span> Custom action plans</li>
+              </ul>
             </article>
 
-            <article class="feature-card" id="feature-challenges">
+            <article class="feature-card animate-slide-up" style="animation-delay: 0.4s" aria-labelledby="feat-chal">
               <div class="feature-icon" aria-hidden="true">🏆</div>
-              <h3 >Weekly Challenges</h3>
-              <p >
-                Earn points, build streaks, and unlock achievements as you adopt
-                greener habits. Make sustainability fun.
-              </p>
+              <h3 id="feat-chal">Weekly Challenges</h3>
+              <p>Turn sustainable actions into habits. Complete challenges, earn points, and climb the global leaderboard.</p>
+              <ul class="feature-list">
+                <li><span aria-hidden="true">✓</span> Community goals</li>
+                <li><span aria-hidden="true">✓</span> Achievement badges</li>
+              </ul>
             </article>
           </div>
         </div>

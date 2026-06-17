@@ -3,7 +3,9 @@
  * @description Wrapper for Chart.js to ensure consistent styling and accessibility
  */
 
-import Chart from 'chart.js/auto';
+import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend, BarController, BarElement, DoughnutController, ArcElement } from 'chart.js';
+
+Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend, BarController, BarElement, DoughnutController, ArcElement);
 
 // Custom color palette designed for accessibility (colorblind friendly)
 const COLORS = {
