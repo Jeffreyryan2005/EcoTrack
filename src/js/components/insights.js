@@ -120,8 +120,8 @@ export function renderInsights(container) {
   const renderHeader = () => {
     return `
       <header class="insights-header">
-        <h1>Your Personalized Insights</h1>
-        <p class="insights-subtitle">We've analyzed your footprint. Here are the most effective actions you can take to reduce your impact.</p>
+        <h1>Your Smart EcoAssistant Insights</h1>
+        <p class="insights-subtitle">As your dynamic AI assistant, I've analyzed your footprint. Here are the most effective actions you can take to reduce your impact.</p>
         
         <div class="potential-section">
           <h2>Your Potential Impact</h2>

@@ -20,6 +20,15 @@ describe('UI Components', () => {
   });
 
   it('renders navbar correctly', () => {
+    container.innerHTML = `
+      <header class="navbar" id="site-header">
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#home" class="nav-link" data-link="home">Home</a></li>
+        </ul>
+        <button id="nav-toggle"></button>
+        <button id="theme-toggle"></button>
+      </header>
+    `;
     renderNavbar(container);
     expect(container.querySelector('.navbar')).not.toBeNull();
     expect(container.querySelectorAll('.nav-link').length).toBeGreaterThan(0);

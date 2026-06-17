@@ -936,3 +936,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 .modal { background: var(--surface-card); padding: var(--space-8); border-radius: var(--radius-2xl); max-width: 90vw; width: 500px; position: relative; box-shadow: var(--shadow-2xl); border: 1px solid var(--border-subtle); }
 .modal-close { position: absolute; top: var(--space-4); right: var(--space-4); background: transparent; border: none; font-size: 1.5rem; color: var(--text-secondary); cursor: pointer; padding: var(--space-2); line-height: 1; }
 .modal-close:hover { color: var(--color-primary-500); }
+/* ──────────────── AI Assistant FAB ──────────────── */
+.ai-fab { position: fixed; bottom: var(--space-8); right: var(--space-8); background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500)); color: white; border: none; border-radius: var(--radius-full); padding: var(--space-3) var(--space-5); display: flex; align-items: center; gap: var(--space-2); font-weight: var(--font-weight-bold); font-size: var(--font-size-md); box-shadow: var(--shadow-lg), var(--shadow-glow-md); cursor: pointer; z-index: var(--z-sticky); transition: transform var(--transition-bounce), box-shadow var(--transition-fast); }
+.ai-fab:hover { transform: translateY(-5px) scale(1.05); box-shadow: var(--shadow-xl), var(--shadow-glow-lg); }
+.ai-fab-icon { font-size: 1.25rem; }

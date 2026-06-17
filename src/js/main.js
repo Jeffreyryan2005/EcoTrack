@@ -66,8 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
   router.register('/learn', renderEducation);
   
   router.init();
-});
 
+  // Setup AI FAB listener
+  const aiFab = document.getElementById('ai-fab');
+  if (aiFab) {
+    aiFab.addEventListener('click', () => {
+      // Use router to navigate to insights
+      window.location.hash = '#insights';
+      // Fallback if hash routing is disabled
+      if (!window.location.hash) {
+        window.history.pushState(null, null, '/insights');
+        router.handleRoute();
+      }
+    });
+  }
+});
 function initTheme(storage) {
   const savedTheme = storage.get('theme') || 
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
