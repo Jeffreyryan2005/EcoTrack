@@ -1,125 +1,141 @@
 /**
  * @module assistant
- * @description Groq-powered AI Assistant
+ * @description Groq-powered AI Chat Widget (bottom-right corner)
  */
 
 const API_URL = '/api/chat';
 
-export function renderAssistantModal(modalContent, overlay) {
-  // Setup HTML for Chat UI
-  modalContent.innerHTML = `
-    <div class="assistant-chat-container">
-      <div class="assistant-header">
-        <h2>✨ Smart EcoAssistant</h2>
-        <p>Powered by Groq Llama 3</p>
+let chatWidgetOpen = false;
+let chatWidget = null;
+let messagesHistory = null;
+
+function createChatWidget() {
+  // Don't recreate if already exists
+  if (chatWidget) {
+    chatWidget.style.display = 'flex';
+    chatWidgetOpen = true;
+    return;
+  }
+
+  chatWidget = document.createElement('div');
+  chatWidget.id = 'ai-chat-widget';
+  chatWidget.innerHTML = `
+    <div class="ai-chat-header">
+      <div>
+        <strong>✨ Smart EcoAssistant</strong>
+        <span style="display:block;font-size:0.75rem;opacity:0.7;">Powered by Groq Llama 3</span>
       </div>
-      <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite">
-        <div class="message assistant-msg">
-          <div class="msg-bubble">Hello! I am your AI EcoAssistant. I've analyzed your carbon footprint. How can I help you reduce your emissions today?</div>
-        </div>
-      </div>
-      <form class="assistant-input-area" id="assistant-form">
-        <input type="text" id="assistant-input" placeholder="Ask about your carbon footprint..." required autocomplete="off" aria-label="Message AI Assistant">
-        <button type="submit" class="btn btn-primary" aria-label="Send Message">Send</button>
-      </form>
+      <button id="ai-chat-close" aria-label="Close chat">&times;</button>
     </div>
+    <div class="ai-chat-messages" id="ai-chat-messages">
+      <div class="ai-msg"><div class="ai-bubble">Hello! I'm your AI EcoAssistant. How can I help you reduce your carbon footprint today?</div></div>
+    </div>
+    <form class="ai-chat-input" id="ai-chat-form">
+      <input type="text" id="ai-chat-input" placeholder="Ask about your carbon footprint..." required autocomplete="off" aria-label="Message AI Assistant">
+      <button type="submit" aria-label="Send">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+      </button>
+    </form>
   `;
 
-  // Apply Inline Styles to GUARANTEE Bottom Right Corner Positioning
-  overlay.style.alignItems = 'flex-end';
-  overlay.style.justifyContent = 'flex-end';
-  overlay.style.padding = '2rem';
-  
-  const modal = modalContent.parentElement;
-  if (modal) {
-    modal.style.margin = '0';
-    modal.style.width = '400px';
-    modal.style.maxWidth = '100%';
-    modal.style.maxHeight = 'calc(100vh - 100px)';
-  }
+  document.body.appendChild(chatWidget);
+  chatWidgetOpen = true;
 
-  // Show Modal
-  overlay.hidden = false;
-  overlay.setAttribute('aria-hidden', 'false');
+  // Close button
+  document.getElementById('ai-chat-close').addEventListener('click', () => {
+    chatWidget.style.display = 'none';
+    chatWidgetOpen = false;
+  });
 
-  const form = document.getElementById('assistant-form');
-  const input = document.getElementById('assistant-input');
-  const messagesContainer = document.getElementById('assistant-messages');
+  // Fetch user context from localStorage
+  let userContext = 'No footprint calculated yet.';
+  try {
+    const stored = JSON.parse(localStorage.getItem('ecotrack_data') || 'null');
+    if (stored && stored.value) {
+      const d = stored.value;
+      userContext = `Transport: ${d.transport?.dailyDistance || '?'}km/day, Diet: ${d.food?.beef || '?'} meals, Renewable: ${d.energy?.renewablePercent || '?'}%`;
+    }
+  } catch (e) { /* ignore */ }
 
-  // Fetch context
-  const storage = JSON.parse(localStorage.getItem('ecotrack_data') || 'null');
-  let userContext = "No footprint calculated yet.";
-  if (storage && storage.value) {
-    const data = storage.value;
-    userContext = `User's Data: Transport Daily=${data.transport?.dailyDistance}km, MeatDiet=${data.food?.beef} meals, Renewable Energy=${data.energy?.renewablePercent}%`;
-  }
-
-  // Messages History
-  const messages = [
-    { role: 'system', content: `You are EcoAssistant, an expert sustainability advisor for the EcoTrack app. Keep answers under 100 words, practical, and friendly. Context: ${userContext}` }
+  messagesHistory = [
+    { role: 'system', content: `You are EcoAssistant, a friendly sustainability advisor for EcoTrack. Keep answers under 100 words, practical, and encouraging. User context: ${userContext}` }
   ];
 
-  const appendMessage = (role, text) => {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `message ${role === 'user' ? 'user-msg' : 'assistant-msg'}`;
-    msgDiv.innerHTML = `<div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>`;
-    messagesContainer.appendChild(msgDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  };
+  const messagesEl = document.getElementById('ai-chat-messages');
+  const form = document.getElementById('ai-chat-form');
+  const input = document.getElementById('ai-chat-input');
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = role === 'user' ? 'user-msg' : 'ai-msg';
+    div.innerHTML = `<div class="${role === 'user' ? 'user-bubble' : 'ai-bubble'}">${text.replace(/\n/g, '<br>')}</div>`;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const userText = input.value.trim();
-    if (!userText) return;
+    const text = input.value.trim();
+    if (!text) return;
 
-    // Add user msg
-    appendMessage('user', userText);
-    messages.push({ role: 'user', content: userText });
+    addMessage('user', text);
+    messagesHistory.push({ role: 'user', content: text });
     input.value = '';
 
-    // Show loading
-    const loadingDiv = document.createElement('div');
-    loadingDiv.className = 'message assistant-msg loading-msg';
-    loadingDiv.innerHTML = '<div class="msg-bubble">Thinking...</div>';
-    messagesContainer.appendChild(loadingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    // Show typing indicator
+    const typing = document.createElement('div');
+    typing.className = 'ai-msg';
+    typing.innerHTML = '<div class="ai-bubble typing">Thinking<span class="dots">...</span></div>';
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
 
     try {
-      const response = await fetch(API_URL, {
+      const res = await fetch(API_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'llama3-8b-8192',
-          messages: messages,
+          messages: messagesHistory,
           temperature: 0.7,
           max_tokens: 256
         })
       });
 
-      const data = await response.json().catch(() => ({}));
+      const data = await res.json().catch(() => null);
 
-      if (!response.ok) {
-        throw new Error(data.error?.message || 'Failed to fetch from server API');
+      if (!res.ok || !data) {
+        const errMsg = data?.error?.message || `Server error (${res.status})`;
+        throw new Error(errMsg);
       }
 
-      const aiReply = data.choices[0].message.content;
-
-      // Remove loading
-      loadingDiv.remove();
-
-      // Add AI reply
-      appendMessage('assistant', aiReply);
-      messages.push({ role: 'assistant', content: aiReply });
+      const reply = data.choices[0].message.content;
+      typing.remove();
+      addMessage('assistant', reply);
+      messagesHistory.push({ role: 'assistant', content: reply });
 
     } catch (err) {
-      console.error(err);
-      loadingDiv.remove();
-      appendMessage('assistant', err.message || "Sorry, I'm having trouble connecting right now.");
+      console.error('AI Chat Error:', err);
+      typing.remove();
+      addMessage('assistant', `⚠️ ${err.message}`);
     }
   });
 
-  // Focus input
-  setTimeout(() => input.focus(), 100);
+  setTimeout(() => input.focus(), 150);
+}
+
+export function initAssistant() {
+  // Replace the existing FAB click handler
+  const fab = document.getElementById('ai-fab');
+  if (fab) {
+    fab.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (chatWidgetOpen && chatWidget) {
+        chatWidget.style.display = 'none';
+        chatWidgetOpen = false;
+      } else {
+        createChatWidget();
+      }
+    });
+  }
 }

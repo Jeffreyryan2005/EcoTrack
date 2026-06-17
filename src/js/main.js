@@ -9,7 +9,7 @@ import { renderDashboard } from './components/dashboard.js';
 import { renderInsights } from './components/insights.js';
 import { renderChallenges } from './components/challenges.js';
 import { renderEducation } from './components/education.js';
-import { renderAssistantModal } from './components/assistant.js';
+import { initAssistant } from './components/assistant.js';
 import { SecureStorage } from './utils/storage.js';
 import { sanitizeHTML } from './utils/sanitize.js';
 
@@ -65,31 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   router.init();
 
-  // Setup Modal Closing globally
-  const modalOverlay = document.getElementById('modal-overlay');
-  const modalClose = document.getElementById('modal-close');
-  const modalContent = document.getElementById('modal-content');
-  
-  if (modalOverlay && modalClose) {
-    const closeModal = () => {
-      modalOverlay.hidden = true;
-      modalOverlay.setAttribute('aria-hidden', 'true');
-      modalOverlay.classList.remove('assistant-overlay');
-    };
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeModal();
-    });
-  }
-
-  // Setup AI FAB listener
-  const aiFab = document.getElementById('ai-fab');
-  if (aiFab && modalOverlay && modalContent) {
-    aiFab.addEventListener('click', () => {
-      modalOverlay.classList.add('assistant-overlay');
-      renderAssistantModal(modalContent, modalOverlay);
-    });
-  }
+  // Initialize AI Chat Widget
+  initAssistant();
 });
 function initTheme(storage) {
   const savedTheme = storage.get('theme') || 
