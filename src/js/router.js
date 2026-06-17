@@ -12,12 +12,14 @@ export class Router {
     
     // Intercept link clicks for SPA routing
     document.body.addEventListener('click', e => {
-      if (e.target.matches('[data-link]') || e.target.closest('a')?.classList.contains('nav-link')) {
-        const link = e.target.closest('a');
-        if (link && link.href && link.origin === window.location.origin) {
-          e.preventDefault();
-          this.navigateTo(link.getAttribute('href'));
-        }
+      const link = e.target.closest('a[data-link], a.nav-link');
+      if (link && link.href && link.origin === window.location.origin) {
+        e.preventDefault();
+        
+        // Handle both hash-based and path-based links
+        const href = link.getAttribute('href');
+        const path = href.startsWith('#') ? '/' + href.substring(1) : href;
+        this.navigateTo(path);
       }
     });
   }
