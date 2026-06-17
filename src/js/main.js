@@ -112,22 +112,6 @@ function renderHome(container) {
               Learn More
             </a>
           </div>
-
-          <!-- Floating Stats -->
-          <div class="hero-stats" aria-label="Platform statistics">
-            <div class="stat-counter-box">
-              <span class="stat-number" id="stat-users">12,847</span>
-              <span class="stat-label">Active Users</span>
-            </div>
-            <div class="stat-counter-box">
-              <span class="stat-number" id="stat-co2">2.4M</span>
-              <span class="stat-label">kg CO₂ Tracked</span>
-            </div>
-            <div class="stat-counter-box">
-              <span class="stat-number" id="stat-reduction">18%</span>
-              <span class="stat-label">Avg. Reduction</span>
-            </div>
-          </div>
         </div>
 
         <!-- Floating eco icons -->
